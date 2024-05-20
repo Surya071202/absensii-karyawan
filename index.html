@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Absensi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2, h3 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input, textarea, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="login" style="display: block;">
+            <h2>Login</h2>
+            <form id="loginForm" style="display: block;">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="absensi" style="display: none;">
+            <h2>Form Absensi</h2>
+            <form id="absensiForm" style="display: block;">
+                <label for="date">Tanggal:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Waktu:</label>
+                <input type="time" id="time" name="time" required>
+                <label for="photo">Upload Foto:</label>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+                <button type="submit">Submit</button>
+            </form>
+            <form id="complaintForm" style="display: block;">
+                <h3>Form Pengaduan</h3>
+                <label for="complaint">Pengaduan:</label>
+                <textarea id="complaint" name="complaint" rows="4" required></textarea>
+                <button type="submit">Kirim Pengaduan</button>
+            </form>
+        </div>
+
+        <div id="admin" style="display: none;">
+            <h2>Data Absensi Karyawan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Karyawan</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Foto</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>2023-05-20</td>
+                        <td>09:00</td>
+                        <td><img src="path_to_photo.jpg" alt="Photo" width="50"></td>
+                        <td>Hadir</td>
+                    </tr>
+                    <!-- Data absensi lainnya akan ditampilkan di sini -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lakukan validasi login, dan jika sukses, tampilkan halaman absensi
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('absensi').style.display = 'block';
+        });
+
+        document.getElementById('absensiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Absensi berhasil disubmit!');
+        });
+
+        document.getElementById('complaintForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Pengaduan berhasil dikirim!');
+        });
+    </script>
+</body>
+</html>
